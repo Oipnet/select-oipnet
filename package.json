@@ -1,6 +1,6 @@
 {
   "name": "select-oipnet",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Create select input with ajax loading",
   "main": "src/js/select-oipnet.js",
   "scripts": {
