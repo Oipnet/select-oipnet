@@ -1,0 +1,19 @@
+{
+  "name": "select-oipnet",
+  "version": "1.0.0",
+  "description": "Create select input with ajax loading",
+  "main": "src/js/select-oipnet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arnaud POINTET <arnaud@oipnet.info>",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^1.8.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "debounce": "^1.1.0",
+    "mustache": "^2.3.0"
+  }
+}
