@@ -1,0 +1,17 @@
+#select-oipnet-result {
+    width: 400px;
+    border: 1px solid #ddd;
+}
+
+#select-oipnet-result ul {
+    margin: 0;
+    padding: 0;
+}
+
+#select-oipnet-result li {
+    padding: 10px;
+}
+
+#select-oipnet-result li:hover, #select-oipnet-result li.selected  {
+    background-color: red;
+}
