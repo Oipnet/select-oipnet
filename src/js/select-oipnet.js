@@ -9,6 +9,7 @@ class SelectAjax {
         this.opts = opts
         this.selectedElements = -1;
         this.currentElement = -1;
+        this.search = '';
 
         this.selectedElements = document.querySelectorAll(selector);
         this.loadTemplate().then(template => {
@@ -25,7 +26,12 @@ class SelectAjax {
     }
     addOnKeyUpEvent(elt) {
         elt.addEventListener('keyup', debounce((e) => {
+            if (e.target.value === this.search) {
+                return;
+            }
+
             const elt = e.target
+            this.search = elt.value
             this.getDatas().then(datas => {
                 const template = Mustache.render(this.template, { datas: datas.data })
                 const newElt = document.createRange().createContextualFragment(template);
@@ -49,8 +55,7 @@ class SelectAjax {
         });
     }
     addKeyDownOrUpPressEvent(elt) {
-        document.addEventListener('keyup', (event) => {
-            console.log('key')
+        document.addEventListener('keydown', (event) => {
             event.stopPropagation()
             if (! document.querySelector('#select-oipnet-result')) {
                 return
@@ -59,7 +64,6 @@ class SelectAjax {
             if (event.keyCode === 40 || event.keyCode === 38) {
                 const selected = document.querySelector('#select-oipnet-result .selected')
                 if (selected) {
-                    console.log('remove')
                     selected.classList.remove('selected')
                 }
                 
@@ -77,6 +81,7 @@ class SelectAjax {
 
                 const current = results[this.currentElement];
                 current.classList.add('selected');
+                current.querySelector('a').focus()
             }
         })
     }
