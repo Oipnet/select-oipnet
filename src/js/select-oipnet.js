@@ -83,6 +83,8 @@ class SelectAjax {
                 const current = results[this.currentElement];
                 current.classList.add('selected');
                 current.querySelector('a').focus()
+
+                event.preventDefault()
             }
         })
     }
