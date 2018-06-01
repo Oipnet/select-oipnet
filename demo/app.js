@@ -9,4 +9,4 @@ const transform = (datas) => {
         }
     }).slice(0, 20)
 }
-new SelectAjax('.select-ajax', { url: 'https://jsonplaceholder.typicode.com/posts', transformer: transform})
+new SelectAjax('.select-ajax', { url: 'https://jsonplaceholder.typicode.com/posts', transformer: transform, name: 'select-ajax'})

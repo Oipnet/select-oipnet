@@ -10,6 +10,7 @@ class SelectAjax {
         this.selectedElements = -1;
         this.currentElement = -1;
         this.search = '';
+        this.name = opts.name || ''
 
         this.selectedElements = document.querySelectorAll(selector);
         this.loadTemplate().then(template => {
@@ -41,6 +42,11 @@ class SelectAjax {
                     result.parentNode.removeChild(result);
                 }
                 
+                let hiddenId = document.createElement('input');
+                hiddenId.setAttribute('type', 'hidden');
+                hiddenId.setAttribute('id', 'select-oipnet-hidden');
+                hiddenId.setAttribute('name', this.name);
+                elt.parentNode.prepend(hiddenId)
                 elt.parentNode.insertBefore(newElt, elt.nextSibling);
                 this.addHoverEvent(elt)
             });
@@ -50,6 +56,9 @@ class SelectAjax {
         document.addEventListener('click', (event) => {
             if(! event.target.closest('#select-oipnet-result')) {
                 if (document.querySelector('#select-oipnet-result')) {
+                    const selected = document.querySelector('#select-oipnet-result .selected');
+                    elt.value = selected.getAttribute('data-value')
+                    document.querySelector('#select-oipnet-hidden').value = selected.getAttribute('data-id')
                     document.querySelector('#select-oipnet-result').remove()
                     this.selectedElements = -1
                 }
