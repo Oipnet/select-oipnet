@@ -50,6 +50,7 @@ class SelectAjax {
             if(! event.target.closest('#select-oipnet-result')) {
                 if (document.querySelector('#select-oipnet-result')) {
                     document.querySelector('#select-oipnet-result').remove()
+                    this.selectedElements = -1
                 }
             }
         });

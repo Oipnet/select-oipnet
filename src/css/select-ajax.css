@@ -1,6 +1,40 @@
+@keyframes open-result {
+    0% {
+        height: 0;
+    }
+    50% {
+        height: 150px;
+    }
+    100% {
+        height: 300px;
+    }
+}
+
 #select-oipnet-result {
     width: 400px;
+    max-height: 300px;
     border: 1px solid #ddd;
+    overflow-y: scroll;
+    animation: open-result 0.8s;
+}
+
+#select-oipnet-result::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+#select-oipnet-result::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+#select-oipnet-result::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+#select-oipnet-result::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
 
 #select-oipnet-result ul {
@@ -9,7 +43,8 @@
 }
 
 #select-oipnet-result li {
-    padding: 10px;
+    margin: 10px 0;
+    padding: 0 10px;
 }
 
 #select-oipnet-result li:hover, #select-oipnet-result li.selected  {
