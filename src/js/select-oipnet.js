@@ -42,6 +42,7 @@ class SelectAjax {
                 }
                 
                 elt.parentNode.insertBefore(newElt, elt.nextSibling);
+                this.addHoverEvent(elt)
             });
         }, 250));
     }
@@ -86,6 +87,27 @@ class SelectAjax {
 
                 event.preventDefault()
             }
+        })
+    }
+    addHoverEvent(elt) {
+        const lis = document.querySelectorAll('#select-oipnet-result li');
+
+        lis.forEach((li) => {
+            li.addEventListener('mouseenter', (e) => {
+                //e.stopPropagation();
+                const selected = document.querySelector('#select-oipnet-result .selected')
+                if (selected) {
+                    selected.classList.remove('selected')
+                }
+                e.target.classList.add('selected')
+                const lis = e.target.parentNode.querySelectorAll('li');
+
+                lis.forEach((li, indice) => {
+                    if (li.classList.contains('selected')) {
+                        this.currentElement = indice;
+                    }
+                })
+            })
         })
     }
     getDatas() {
