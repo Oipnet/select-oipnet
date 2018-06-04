@@ -130,8 +130,13 @@ class SelectAjax {
             this.opts.transformer = (datas => datas)
         }
 
+        if (! this.opts.params) {
+            this.opts.params = {}
+        }
+
         return axios.get(this.opts.url, {
-            transformResponse: this.opts.transformer
+            transformResponse: this.opts.transformer,
+            params: this.opts.params
         });
     }
     loadTemplate() {
