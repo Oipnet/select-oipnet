@@ -36,15 +36,15 @@ class SelectAjax {
             this.getDatas().then(datas => {
                 const template = Mustache.render(this.template, { datas: datas.data })
                 const newElt = document.createRange().createContextualFragment(template);
-                newElt.querySelector('div').id = 'select-oipnet-result'
-                const result = document.querySelector('#select-oipnet-result')
+                newElt.querySelector('div').id = 'selecta-result'
+                const result = document.querySelector('#selecta-result')
                 if (result) {
                     result.parentNode.removeChild(result);
                 }
                 
                 let hiddenId = document.createElement('input');
                 hiddenId.setAttribute('type', 'hidden');
-                hiddenId.setAttribute('id', 'select-oipnet-hidden');
+                hiddenId.setAttribute('id', 'selecta-hidden');
                 hiddenId.setAttribute('name', this.name);
                 elt.parentNode.prepend(hiddenId)
                 elt.parentNode.insertBefore(newElt, elt.nextSibling);
@@ -54,12 +54,12 @@ class SelectAjax {
     }
     addCloseOnOuterClick(elt) {
         document.addEventListener('click', (event) => {
-            if(! event.target.closest('#select-oipnet-result')) {
-                if (document.querySelector('#select-oipnet-result')) {
-                    const selected = document.querySelector('#select-oipnet-result .selected');
+            if(! event.target.closest('#selecta-result')) {
+                if (document.querySelector('#selecta-result')) {
+                    const selected = document.querySelector('#selecta-result .selected');
                     elt.value = selected.getAttribute('data-value')
-                    document.querySelector('#select-oipnet-hidden').value = selected.getAttribute('data-id')
-                    document.querySelector('#select-oipnet-result').remove()
+                    document.querySelector('#selecta-hidden').value = selected.getAttribute('data-id')
+                    document.querySelector('#selecta-result').remove()
                     this.selectedElements = -1
                 }
             }
@@ -68,19 +68,19 @@ class SelectAjax {
     addKeyDownOrUpPressEvent(elt) {
         document.addEventListener('keydown', (event) => {
             event.stopPropagation()
-            if (! document.querySelector('#select-oipnet-result')) {
+            if (! document.querySelector('#selecta-result')) {
                 return
             }
 
             if (event.keyCode === 40 || event.keyCode === 38) {
-                const selected = document.querySelector('#select-oipnet-result .selected')
+                const selected = document.querySelector('#selecta-result .selected')
                 if (selected) {
                     selected.classList.remove('selected')
                 }
                 
                 (event.keyCode === 40)?this.currentElement++:this.currentElement--
 
-                const results = document.querySelectorAll('#select-oipnet-result li')
+                const results = document.querySelectorAll('#selecta-result li')
 
                 if (this.currentElement >= results.length) {
                     this.currentElement = 0;
@@ -99,12 +99,12 @@ class SelectAjax {
         })
     }
     addHoverEvent(elt) {
-        const lis = document.querySelectorAll('#select-oipnet-result li');
+        const lis = document.querySelectorAll('#selecta-result li');
 
         lis.forEach((li) => {
             li.addEventListener('mouseenter', (e) => {
                 //e.stopPropagation();
-                const selected = document.querySelector('#select-oipnet-result .selected')
+                const selected = document.querySelector('#selecta-result .selected')
                 if (selected) {
                     selected.classList.remove('selected')
                 }

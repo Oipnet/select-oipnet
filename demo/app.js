@@ -1,4 +1,4 @@
-const SelectAjax = require('../src/js/select-oipnet');
+const SelectAjax = require('../src/js/selecta');
 
 const transform = (datas) => {
     datas = JSON.parse(datas)

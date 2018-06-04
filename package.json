@@ -1,8 +1,8 @@
 {
-  "name": "select-oipnet",
+  "name": "selecta",
   "version": "0.0.1",
   "description": "Create select input with ajax loading",
-  "main": "src/js/select-oipnet.js",
+  "main": "src/js/selecta.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
